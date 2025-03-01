@@ -79,16 +79,16 @@ local Library = {
     ActiveTab = nil;
     Toggled = false;
 
-    IsMobile = false;
+    IsMobile = true;
     DevicePlatform = Enum.Platform.None;
 
     CanDrag = true;
     CantDragForced = false;
 
     NotifySide = "Right";
-    ShowCustomCursor = true;
+    ShowCustomCursor = false;
     ShowToggleFrameInKeybinds = true;
-    NotifyOnError = false; -- true = Library:Notify for SafeCallback (still warns in the developer console)
+    NotifyOnError = false;
 
     VideoLink = "";
     TotalTabs = 0;
@@ -100,7 +100,7 @@ local Library = {
     Buttons = Buttons;
 };
 
-pcall(function() Library.DevicePlatform = InputService:GetPlatform(); end); -- For safety so the UI library doesn't error.
+pcall(function() Library.DevicePlatform = InputService:GetPlatform(); end);
 Library.IsMobile = (Library.DevicePlatform == Enum.Platform.Android or Library.DevicePlatform == Enum.Platform.IOS);
 Library.MinSize = if Library.IsMobile then Vector2.new(550, 200) else Vector2.new(550, 300);
 
